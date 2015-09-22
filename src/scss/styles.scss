@@ -1,0 +1,104 @@
+$merriweather: Merriweather, serif;
+$lato: Lato, sans-serif;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #F6F4F4;
+  color: #675232;
+  font: 24px/40px $merriweather;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.slide-container {
+  width: 960px;
+  height: 720px;
+  margin: 0 auto;
+}
+
+.slide-plane {
+  position: relative;
+  transition: transform 800ms cubic-bezier(0.700, 0.005, 0.395, 1.005);
+}
+
+.slide {
+  position: absolute;
+  width: 960px;
+  height: 720px;
+  padding: 32px;
+  display: flex;
+  transition: opacity 450ms cubic-bezier(0.700, 0.005, 0.395, 1.005);
+}
+
+.inner-sect {
+  transition: opacity 250ms 100ms;
+}
+.inner-sect.hidden {
+  opacity: 0;
+}
+.slide.inactive .inner-sect {
+  opacity: 0;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide.inactive {
+  opacity: 0;
+}
+
+.slide .vertical-center {
+  align-self: center;
+  width: 100%;
+}
+
+.slide .horiz-center {
+  text-align: center;
+}
+.slide img {
+  border-radius: 16px;
+  margin: 0 auto;
+  display: block;
+}
+
+.play-field {
+  position: relative;
+  img {
+    transform: scale(0.33, 0.33);
+    position: absolute;
+    transform-origin: 0 0 !important;
+  }
+}
+
+/* Typography crap: */
+
+h1,h2,h3,h4 {
+  font-family: $lato;
+  font-weight: 300;
+  line-height: 1;
+}
+h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 48px;
+}
+h2 {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 32px;
+  color: #8B3313;
+}
