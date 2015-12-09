@@ -16,38 +16,15 @@
               38 :internal-back
               37 :back})
 
-(def slide-list [:introduction
-                 :who-am-i?
-                 :a-rant
-                 :this-sucks
-                 :whats-the-ideal?
-                 :clojure
-                 :figwheel
-                 :upshot
-                 :flow
-                 :play
+(def slide-list [:a-rant
+                 :rather
                  :play-2
                  :demo
                  :questions?])
 
-
-(defslide introduction [_] [:div.vertical-center
-                            [:h1 "Live coding webapps"]
-                            [:h2 "with ClojureScript and Figwheel"]])
-
-(defslide who-am-i? [state]
-          [:div.vertical-center
-           [:h1 "Who am I?"]
-           [:h2 "Nick Husher (@teslanick)"]
-           [:ul
-            (s/on 1 state [:li "Work at Faraday"])
-            (s/on 2 state [:li "Interested in functional programming"])
-            (s/on 3 state [:li "Building better software more humanely"])]])
-
-
 (defslide a-rant [state]
           [:div.vertical-center
-           [:h2 "And so:"]
+           [:h2 "The world we live in"]
            [:h1 "A rant about web development"]
            [:ol
             (s/on 1 state [:li "Write code."])
@@ -59,53 +36,10 @@
             (s/on 7 state [:li "Do it again."
                            (s/on 8 state [:span " And again."
                                           (s/on 9 state [:span " And again."])])])]])
-
-(defslide this-sucks [state]
+(defslide rather [state]
           [:div.vertical-center
-           [:h1 "This sucks, right?"]])
-
-(defslide whats-the-ideal? [state]
-          [:div.vertical-center
-           [:h1 "What's the ideal?"]
-           (s/on 1 state [:h2 "Write code, see the change immediately"])
-           (s/on 2 state [:p "What if we could replace the code running in the browser with new code?"])
-           (s/on 3 state [:p "What are the implications?"])
-           (s/on 4 state [:div [:img (if (>= (:ins-counter state) 4)
-                                       {:src "/img/ancient-aliens-once.gif" :height "405"}
-                                       {:src "" :height "405"})]])])
-
-(defslide clojure [state]
-          [:div.vertical-center
-           [:h1 "Clojure"]
-           [:ul
-            (s/on 1 state [:li "Dialect of Lisp"])
-            (s/on 2 state [:li "Hosted on several platforms including the JVM and .NET"])
-            (s/on 3 state [:li "Reloadable code & REPL-based development"])
-            (s/on 4 state [:li "Javascript is a first-class compilation target — Clojurescript"])]])
-
-(defslide figwheel [state]
-          [:div.vertical-center
-           [:h1 "Figwheel"]
-           [:ul
-            (s/on 1 state [:li "A harness for a client-side application development"])
-            (s/on 2 state [:li "Detects code changes"])
-            (s/on 3 state [:li "Pushes changes to connected clients"])
-            (s/on 4 state [:li "Also works for CSS"])
-            (s/on 5 state [:li "Doesn't lose application state"])]])
-
-(defslide upshot [state]
-          [:div.vertical-center
-           [:h1 "Live coding experience"]
-           [:h2 "Instantaneous feedback is magical"]])
-
-(defslide flow [state]
-          [:div.vertical-center
-           [:h1 "Flow"]
-           [:img {:src "/img/challenge_vs_skill.svg"}]]) ; img
-
-(defslide play [state]
-          [:div.vertical-center
-           [:h1 {:style {:textAlign "center"}} "Play"]])
+           [:h2 "I would rather"]
+           [:h1 "Write code & instantly see the change"]])
 
 (defslide play-2 [state]
           [:div.play-field
@@ -115,9 +49,9 @@
                                 :src   "/img/ar-1.png"}]])
            (s/on 2 state
                  [:div
-                  [:img {:style {:top "80px" :left "220px" :transform "rotate(20deg) scale(0.5,0.5)"}
+                  [:img {:style {:top "80px" :left "120px" :transform "rotate(20deg) scale(0.5,0.5)"} ; 220
                          :src   "/img/ar-1.png"}]
-                  [:img {:style {:top "220px" :left "190px"} :src "/img/ex.png"}]]) ; 190
+                  [:img {:style {:top "220px" :left "90px"} :src "/img/ex.png"}]]) ; 190
            (s/on 2 state
                  [:div
                   [:img {:style {:top "50px" :left "265px" :transform "rotate(-25deg) scale(0.5,0.5)"}
