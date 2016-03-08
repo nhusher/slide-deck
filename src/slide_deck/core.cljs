@@ -21,6 +21,8 @@
                  :a-rant
                  :this-sucks
                  :whats-the-ideal?
+                 :reloadability-1
+                 :reloadability-2
                  :clojure
                  :figwheel
                  :upshot
@@ -41,8 +43,7 @@
            [:h2 "Nick Husher (@teslanick)"]
            [:ul
             (s/on 1 state [:li "Work at Faraday"])
-            (s/on 2 state [:li "Interested in functional programming"])
-            (s/on 3 state [:li "Building better software more humanely"])]])
+            (s/on 2 state [:li "Building better software more humanely"])]])
 
 
 (defslide a-rant [state]
@@ -74,24 +75,48 @@
                                        {:src "/img/ancient-aliens-once.gif" :height "405"}
                                        {:src "" :height "405"})]])])
 
+(defslide reloadability-1 [state]
+          [:div.vertical-center
+           [:h1 "Tradeoffs / Prerequisites"]
+           [:ul
+            (s/on 1 state [:li "Inject new code that will override old code"])
+            (s/on 2 state [:li "Can't hide behavior inside closures:" [:br]
+                           [:pre [:code "(function() {\n  function mySecretBehavior() { ... } \n} ())"]]])
+            (s/on 3 state [:li "Ensure behavior is overwriteable:" [:br]
+                           [:pre [:code "myApp.core.myBehavior = function() { ... }"]]])]])
+
+(defslide reloadability-2 [state]
+          [:div.vertical-center
+           [:h2 "(more)"]
+           [:h1 "Tradeoffs / Prerequisites"]
+           [:ul
+            [:li "Preserve the application state between reloads"]
+            (s/on 1 state
+                  [:li "Can't hide state:" [:br]
+                   [:pre [:code "counter = (function() {\n  var i = 1\n  return function() { return i++ }\n} ())"]]])
+            (s/on 2 state
+                  [:li "Centralizing state makes this easier:" [:br]
+                   [:pre [:code "APP_STATE = window.APP_STATE || { myValue: 10 }"]]])]])
+
+
 (defslide clojure [state]
           [:div.vertical-center
-           [:h1 "Clojure"]
+           [:h1 "Clojurescript"]
            [:ul
-            (s/on 1 state [:li "Dialect of Lisp"])
-            (s/on 2 state [:li "Hosted on several platforms including the JVM and .NET"])
-            (s/on 3 state [:li "Reloadable code & REPL-based development"])
-            (s/on 4 state [:li "Javascript is a first-class compilation target — Clojurescript"])]])
+            (s/on 1 state [:li "Compile-to-JS language"])
+            (s/on 2 state [:li "Variant of Clojure"])
+            (s/on 3 state [:li "Dialect of Lisp"])
+            (s/on 4 state [:li "Hosted on several platforms including the JVM and .NET"])
+            (s/on 5 state [:li "Reloadable code & REPL-based development"])]])
 
 (defslide figwheel [state]
           [:div.vertical-center
            [:h1 "Figwheel"]
            [:ul
             (s/on 1 state [:li "A harness for a client-side application development"])
-            (s/on 2 state [:li "Detects code changes"])
-            (s/on 3 state [:li "Pushes changes to connected clients"])
-            (s/on 4 state [:li "Also works for CSS"])
-            (s/on 5 state [:li "Doesn't lose application state"])]])
+            (s/on 2 state [:li "Detects and pushes changes to connected clients"])
+            (s/on 3 state [:li "Also works for CSS"])
+            (s/on 4 state [:li "Doesn't lose application state"])]])
 
 (defslide upshot [state]
           [:div.vertical-center
@@ -101,7 +126,7 @@
 (defslide flow [state]
           [:div.vertical-center
            [:h1 "Flow"]
-           [:img {:src "/img/challenge_vs_skill.svg"}]]) ; img
+           [:img {:src "/img/challenge_vs_skill.svg"}]])   ; img svg
 
 (defslide play [state]
           [:div.vertical-center
